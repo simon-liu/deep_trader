@@ -1,22 +1,5 @@
-import gzip
-import os
-
-import numpy as np
-import six
-from six.moves.urllib import request
-
-from numpy import genfromtxt
 from sklearn.cross_validation import train_test_split
-from sklearn import preprocessing
-import numpy as np
-import dateutil.parser
-import pdb
-import glob
-import cPickle as pickle
-import shelve
-import six
 import episodic_data
-from six.moves.urllib import request
 
 data = episodic_data.load_data("data.pkl",episode=10)
 data_dict = episodic_data.load_file_data("data_dict.pkl")
@@ -49,13 +32,13 @@ def new_stage_data(action, portfolio, old_state, new_state, portfolio_value, don
     #buying
     if action == 1:
         #old_price = old_state[1]
-        #Todo: Add transaction cost here also 
+        #Todo: Add transaction cost here also
         portfolio_value -= price
         portfolio += 1
     #selling
     elif action == 2:
         #old_price = old_state[2]
-         #Todo: Add transaction cost here also 
+         #Todo: Add transaction cost here also
         portfolio_value += price
         portfolio -= 1
     elif action == 0:
@@ -92,4 +75,4 @@ def show_trader_path(actions, episode_data, portfolio_list, portfolio_value_list
     last_price = episodic_data.data_average_price(data_dict, episode)
     #print(last_price)
     reward = (portfolio_value_list[-1] + portfolio_list[-1]*last_price)
-    return reward 
+    return reward
