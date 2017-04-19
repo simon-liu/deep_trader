@@ -3,6 +3,7 @@ import numpy as np
 import random
 from collections import deque
 from train_stock import get_intial_data, show_trader_path, new_stage_data
+from tensorboard_helper import variable_summaries
 
 
 # Hyper Parameters for DQN
